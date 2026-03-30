@@ -1,0 +1,52 @@
+type: edu
+files:
+  - name: tests/test_task.py
+    visible: false
+    learner_created: false
+  - name: __init__.py
+    visible: false
+    learner_created: false
+  - name: tests/__init__.py
+    visible: false
+    learner_created: false
+  - name: gateway/__init__.py
+    visible: false
+    learner_created: false
+  - name: gateway/application.py
+    visible: true
+    learner_created: false
+  - name: gateway/Dockerfile
+    visible: true
+    learner_created: false
+  - name: gateway/requirements.txt
+    visible: true
+    learner_created: false
+  - name: invsys/__init__.py
+    visible: false
+    learner_created: false
+  - name: invsys/api.py
+    visible: true
+    learner_created: false
+  - name: invsys/dal.py
+    visible: true
+    learner_created: false
+  - name: invsys/Dockerfile
+    visible: true
+    learner_created: false
+  - name: invsys/requirements.txt
+    visible: true
+    learner_created: false
+  - name: runConfigurations/Composing_system_docker-compose_Test.run.xml
+    visible: false
+    learner_created: false
+  - name: buildConfigurations/Composing_system_docker-compose_Build.run.xml
+    visible: false
+    learner_created: false
+  - name: docker-compose.yaml
+    visible: true
+    learner_created: true
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Mon, 30 Mar 2026 07:19:43 UTC"
+record: -1

@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Dockerfile</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.ln { color: #4b5059; font-weight: normal; font-style: normal; }
+</style>
+</head>
+<body bgcolor="#191a1c">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Dockerfile</font>
+</center></td></tr></table>
+<pre><a name="l1"><span class="ln">1    </span></a><span class="s0">FROM </span><span class="s1">python:3</span><span class="s2">.</span><span class="s1">10</span>
+<a name="l2"><span class="ln">2    </span></a><span class="s0">ENV </span><span class="s1">PYTHONUNBUFFERED=1</span>
+<a name="l3"><span class="ln">3    </span></a><span class="s0">COPY </span><span class="s1">requirements</span><span class="s2">.</span><span class="s1">txt </span><span class="s0">/</span>
+<a name="l4"><span class="ln">4    </span></a><span class="s0">RUN </span><span class="s1">pip install </span><span class="s0">--</span><span class="s1">no-cache-dir </span><span class="s0">-</span><span class="s1">r </span><span class="s0">/</span><span class="s1">requirements</span><span class="s2">.</span><span class="s1">txt</span>
+<a name="l5"><span class="ln">5    </span></a><span class="s0">COPY </span><span class="s2">. </span><span class="s0">/</span><span class="s1">app</span>
+<a name="l6"><span class="ln">6    </span></a><span class="s0">WORKDIR /</span><span class="s1">app</span>
+<a name="l7"><span class="ln">7    </span></a><span class="s0">EXPOSE </span><span class="s1">5001</span>
+<a name="l8"><span class="ln">8    </span></a><span class="s0">CMD </span><span class="s2">[</span><span class="s3">&quot;gunicorn&quot;</span><span class="s2">, </span><span class="s3">&quot;--bind&quot;</span><span class="s2">, </span><span class="s3">&quot;0.0.0.0:5001&quot;</span><span class="s2">, </span><span class="s3">&quot;--workers&quot;</span><span class="s2">, </span><span class="s3">&quot;2&quot;</span><span class="s2">, </span><span class="s3">&quot;application:app&quot;</span><span class="s2">]</span>
+<a name="l9"><span class="ln">9    </span></a></pre>
+</body>
+</html>

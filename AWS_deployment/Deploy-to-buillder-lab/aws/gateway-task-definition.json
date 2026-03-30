@@ -1,0 +1,44 @@
+{
+  "family": "flask-app-gateway",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["EC2"],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "ECS_TASK_EXECUTION_ROLE_ARN",
+  "taskRoleArn": "ECS_TASK_ROLE_ARN",
+  "containerDefinitions": [
+    {
+      "name": "gateway",
+      "image": "ACCOUNT_ID.dkr.ecr.AWS_REGION.amazonaws.com/flask-app-gateway:IMAGE_TAG",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 5001,
+          "hostPort": 5001,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        {
+          "name": "INVSYS_BASE_URL",
+          "value": "http://invsys.services.local:5000"
+        }
+      ],
+      "healthCheck": {
+        "command": ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://127.0.0.1:5001/health')\" || exit 1"],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 15
+      },
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/flask-app-gateway",
+          "awslogs-region": "AWS_REGION",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}
